@@ -1,18 +1,25 @@
 package com.iavariav.wisbasmartwisatabatangsmart.fragment;
 
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
-import com.iavariav.wisbasmartwisatabatangsmart.rest.ApiService;
 import com.iavariav.wisbasmartwisatabatangsmart.rest.googleMapsAPI.ApiClientGoogle;
 import com.iavariav.wisbasmartwisatabatangsmart.rest.googleMapsAPI.ApiServiceGoogle;
 
@@ -21,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -33,6 +41,8 @@ import retrofit2.Response;
 public class TempatFragment extends Fragment {
 
 
+    private LinearLayout div;
+
     public TempatFragment() {
         // Required empty public constructor
     }
@@ -42,7 +52,15 @@ public class TempatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_tempat, container, false);
+        View view = inflater.inflate(R.layout.fragment_tempat, container, false);
+        initView(view);
+        LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        @SuppressLint("MissingPermission") Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+
+        Toast.makeText(getActivity(), "" + latitude + longitude, Toast.LENGTH_SHORT).show();
+
 
         getdataWisata();
         return view;
@@ -58,9 +76,11 @@ public class TempatFragment extends Fragment {
         ApiServiceGoogle apiServiceGoogle = ApiClientGoogle.getInstanceRetrofit();
         apiServiceGoogle.getDataWisata()
                 .enqueue(new Callback<ResponseBody>() {
+                    @SuppressLint("SetTextI18n")
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response.body().string());
 //                                Toast.makeText(getActivity(), "" + jsonObject, Toast.LENGTH_SHORT).show();
@@ -96,6 +116,33 @@ public class TempatFragment extends Fragment {
 
 //                                    Toast.makeText(getActivity(), "" + photo_reference, Toast.LENGTH_SHORT).show();
 
+                                    LayoutInflater layoutInflater = (LayoutInflater) Objects.requireNonNull(getActivity()).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                    View view = layoutInflater.inflate(R.layout.list_tempat, null);
+
+                                    final LinearLayout divDirectMap;
+                                    final TextView tvJarak;
+                                    final TextView tvAlamat;
+                                    final TextView tvNamaTempat;
+                                    final ImageView ivIcon;
+
+                                    ivIcon = view.findViewById(R.id.ivIcon);
+                                    Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(width, height).error(R.drawable.ic_launcher_background).into(ivIcon);
+                                    tvNamaTempat = view.findViewById(R.id.tvNamaTempat);
+                                    tvNamaTempat.setText(namaTempat);
+                                    tvAlamat = view.findViewById(R.id.tvAlamat);
+                                    tvAlamat.setText(formatted_address);
+                                    tvJarak = view.findViewById(R.id.tvJarak);
+                                    tvJarak.setText(locLat + ", " + locLong);
+                                    divDirectMap = view.findViewById(R.id.divDirectMap);
+                                    divDirectMap.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Toast.makeText(getActivity(), "Dirrect", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+                                    div.addView(view);
 
                                 }
 
@@ -116,4 +163,7 @@ public class TempatFragment extends Fragment {
     }
 
 
+    private void initView(View view) {
+        div = view.findViewById(R.id.div);
+    }
 }
