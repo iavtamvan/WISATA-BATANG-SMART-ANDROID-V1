@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_wisata"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Wisata" />
+
+    <item
+        android:id="@+id/navigation_tempat"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Tempat" />
+
+    <item
+        android:id="@+id/navigation_berita"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Berita" />
+    <item
+        android:id="@+id/navigation_asma"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Asma" />
+    <item
+        android:id="@+id/navigation_umkm"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="UMKM" />
+
+</menu>
