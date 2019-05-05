@@ -1,6 +1,7 @@
 package com.iavariav.wisbasmartwisatabatangsmart.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -51,6 +52,28 @@ public class LoginActivity extends AppCompatActivity {
                                 loginModel = response.body();
                                 if (response.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "" + loginModel.getErrorMsg(), Toast.LENGTH_SHORT).show();
+                                    SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_NAME, MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString(Config.SHARED_ID_ACCOUNT,loginModel.getIdAccount());
+                                    editor.putString(Config.SHARED_REGISTERED,loginModel.getRegistered());
+                                    editor.putString(Config.SHARED_NAMA_ACCOUNT,loginModel.getNamaAccount());
+                                    editor.putString(Config.SHARED_EMAIL_ACCOUNT,loginModel.getEmailAccount());
+                                    editor.putString(Config.SHARED_NO_HP_ACCOUNT,loginModel.getNoHpAccount());
+                                    editor.putString(Config.SHARED_NIK_ACCOUNT,loginModel.getNikAccount());
+                                    editor.putString(Config.SHARED_ALAMAT_ACCOUNT,loginModel.getAlamatAccount());
+                                    editor.putString(Config.SHARED_AGAMA_ACCOUNT,loginModel.getAgamaAccount());
+                                    editor.putString(Config.SHARED_JABATAN_ACCOUNT,loginModel.getJabatanAccount());
+                                    editor.putString(Config.SHARED_KOTA_ACCOUNT,loginModel.getKotaAccount());
+                                    editor.putString(Config.SHARED_KAB_ACCOUNT,loginModel.getKabAccount());
+                                    editor.putString(Config.SHARED_FOTO_FRONT_ACCOUNT,loginModel.getFotoFrontAccount());
+                                    editor.putString(Config.SHARED_FOTO_BACK_ACCOUNT,loginModel.getFotoBackAccount());
+                                    editor.putString(Config.SHARED_TTD_ACCOUNT,loginModel.getTtdAccount());
+                                    editor.putString(Config.SHARED_LAT_ACCOUNT,loginModel.getLatAccount());
+                                    editor.putString(Config.SHARED_LONG_ACCOUNT,loginModel.getLongAccount());
+                                    editor.putString(Config.SHARED_STATUS_ACCOUNT,loginModel.getStatusAccount());
+
+                                    editor.apply();
+
                                     finishAffinity();
                                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                                 } else {
