@@ -30,4 +30,19 @@ public interface ApiService {
              @Field("password") String password);
 
 
+    @FormUrlEncoded
+    @POST("api_keluhan.php")
+    Call<ResponseErrorModel> postKeluhan
+            (@Field("id_account") String id_account,
+             @Field("gambar_keluhan") String gambar_keluhan,
+             @Field("face_pelaporan_keluhan") String face_pelaporan_keluhan,
+             @Field("nama_keluhan") String nama_keluhan,
+             @Field("deskripsi_keluhan") String deskripsi_keluhan,
+             @Field("jenis_keluhan") String jenis_keluhan,
+             @Field("lat_keluhan") String lat_keluhan,
+             @Field("long_keluhan") String long_keluhan);
+
+
+
+
 }
