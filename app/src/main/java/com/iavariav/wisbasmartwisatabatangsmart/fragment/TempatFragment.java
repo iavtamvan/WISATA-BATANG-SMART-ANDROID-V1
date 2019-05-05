@@ -3,8 +3,10 @@ package com.iavariav.wisbasmartwisatabatangsmart.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
+import com.iavariav.wisbasmartwisatabatangsmart.metode.Haversine;
 import com.iavariav.wisbasmartwisatabatangsmart.rest.googleMapsAPI.ApiClientGoogle;
 import com.iavariav.wisbasmartwisatabatangsmart.rest.googleMapsAPI.ApiServiceGoogle;
 
@@ -35,6 +38,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static java.lang.Math.acos;
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -42,6 +49,10 @@ public class TempatFragment extends Fragment {
 
 
     private LinearLayout div;
+    static double PI_RAD = Math.PI / 180.0;
+    private double distance;
+    private double longitude;
+    private double latitude;
 
     public TempatFragment() {
         // Required empty public constructor
@@ -56,8 +67,8 @@ public class TempatFragment extends Fragment {
         initView(view);
         LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         @SuppressLint("MissingPermission") Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        latitude = location.getLatitude();
 
         Toast.makeText(getActivity(), "" + latitude + longitude, Toast.LENGTH_SHORT).show();
 
@@ -88,11 +99,12 @@ public class TempatFragment extends Fragment {
 //                                Toast.makeText(getActivity(), "" + jsonArray, Toast.LENGTH_SHORT).show();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsonObjectResult = jsonArray.optJSONObject(i);
-                                    String formatted_address = jsonObjectResult.optString("formatted_address"); // untuk alamat
+                                    final String formatted_address = jsonObjectResult.optString("formatted_address"); // untuk alamat
                                     JSONObject objectGeometruy = jsonObjectResult.optJSONObject("geometry");
                                     JSONObject objectGeometryLocation = objectGeometruy.optJSONObject("location"); // untuk lat long
-                                    String locLat = objectGeometryLocation.optString("lat"); // posisi lat
-                                    String locLong = objectGeometryLocation.optString("long"); // posisi long
+                                    double locLat = objectGeometryLocation.optDouble("lat"); // posisi lat
+                                    double locLong = objectGeometryLocation.optDouble("lng"); // posisi long
+                                    getDistance(latitude, longitude, locLat, locLong);
 
                                     String namaTempat = jsonObjectResult.optString("name"); // nama tempat
 
@@ -126,18 +138,24 @@ public class TempatFragment extends Fragment {
                                     final ImageView ivIcon;
 
                                     ivIcon = view.findViewById(R.id.ivIcon);
-                                    Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(width, height).error(R.drawable.ic_launcher_background).into(ivIcon);
+                                    Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(512, 512).error(R.drawable.ic_launcher_background).into(ivIcon);
                                     tvNamaTempat = view.findViewById(R.id.tvNamaTempat);
                                     tvNamaTempat.setText(namaTempat);
                                     tvAlamat = view.findViewById(R.id.tvAlamat);
                                     tvAlamat.setText(formatted_address);
+
                                     tvJarak = view.findViewById(R.id.tvJarak);
-                                    tvJarak.setText(locLat + ", " + locLong);
+//                                    tvJarak.setText(String.valueOf(distance));
+                                    double hitungJarak = Haversine.hitungJarak(latitude, longitude, locLat, locLong);
+                                    tvJarak.setText(String.format("%.2f", hitungJarak) + " km");
+
+
                                     divDirectMap = view.findViewById(R.id.divDirectMap);
                                     divDirectMap.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            Toast.makeText(getActivity(), "Dirrect", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=+"+formatted_address));
+                                            startActivity(intent);
                                         }
                                     });
 
@@ -160,6 +178,24 @@ public class TempatFragment extends Fragment {
                         Toast.makeText(getActivity(), "" + Config.ERROR_LOAD, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    public Double getDistance(Double firstLat, Double firstLong, Double secondLat, Double secondLong){
+
+        double phi1 = firstLat * PI_RAD;
+
+        double phi2 = secondLat * PI_RAD;
+
+        double lam1 = firstLong * PI_RAD;
+
+        double lam2 = secondLong * PI_RAD;
+
+
+        distance = 6371.01 * acos(sin(phi1) * sin(phi2) + cos(phi1) * cos(phi2) * cos(lam2 - lam1));
+
+
+        return distance;
+
     }
 
 
