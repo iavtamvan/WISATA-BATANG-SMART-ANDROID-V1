@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_berita:
                     fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.containerFragment, new BeritaFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.containerFragment, new HomeBeritaFragment()).commit();
                     return true;
                 case R.id.navigation_asma:
                     fragmentManager = getSupportFragmentManager();

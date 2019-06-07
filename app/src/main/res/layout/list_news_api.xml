@@ -27,7 +27,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Judul News"
                 android:id="@+id/listJudulNews"
-                android:textColor="@android:color/black"
+                android:textColor="@color/hijau"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
             <TextView

@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.support.constraint.Constraints.TAG;
 import static java.lang.Math.acos;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -126,38 +128,43 @@ public class TempatFragment extends Fragment {
 //                                    Toast.makeText(getActivity(), "" + photo_reference, Toast.LENGTH_SHORT).show();
 
                                     LayoutInflater layoutInflater = (LayoutInflater) Objects.requireNonNull(getActivity()).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                    View view = layoutInflater.inflate(R.layout.list_tempat, null);
+                                    if (layoutInflater== null) {
+                                        Log.d(TAG, "onResponse: Eror");
+                                    } else {
+                                        View view = layoutInflater.inflate(R.layout.list_tempat, null);
 
-                                    final LinearLayout divDirectMap;
-                                    final TextView tvJarak;
-                                    final TextView tvAlamat;
-                                    final TextView tvNamaTempat;
-                                    final ImageView ivIcon;
+                                        final LinearLayout divDirectMap;
+                                        final TextView tvJarak;
+                                        final TextView tvAlamat;
+                                        final TextView tvNamaTempat;
+                                        final ImageView ivIcon;
 
-                                    ivIcon = view.findViewById(R.id.ivIcon);
-                                    Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(512, 512).error(R.drawable.ic_launcher_background).into(ivIcon);
-                                    tvNamaTempat = view.findViewById(R.id.tvNamaTempat);
-                                    tvNamaTempat.setText(namaTempat);
-                                    tvAlamat = view.findViewById(R.id.tvAlamat);
-                                    tvAlamat.setText(formatted_address);
+                                        ivIcon = view.findViewById(R.id.ivIcon);
+                                        Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(512, 512).error(R.drawable.ic_launcher_background).into(ivIcon);
+                                        tvNamaTempat = view.findViewById(R.id.tvNamaTempat);
+                                        tvNamaTempat.setText(namaTempat);
+                                        tvAlamat = view.findViewById(R.id.tvAlamat);
+                                        tvAlamat.setText(formatted_address);
 
-                                    tvJarak = view.findViewById(R.id.tvJarak);
+                                        tvJarak = view.findViewById(R.id.tvJarak);
 //                                    tvJarak.setText(String.valueOf(distance));
-                                    double hitungJarak = Haversine.hitungJarak(latitude, longitude, locLat, locLong);
-                                    tvJarak.setText(String.format("%.2f", hitungJarak) + " km");
+                                        double hitungJarak = Haversine.hitungJarak(latitude, longitude, locLat, locLong);
+                                        tvJarak.setText(String.format("%.2f", hitungJarak) + " km");
 
 
-                                    divDirectMap = view.findViewById(R.id.divDirectMap);
-                                    divDirectMap.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=+"+formatted_address));
-                                            startActivity(intent);
-                                        }
-                                    });
+                                        divDirectMap = view.findViewById(R.id.divDirectMap);
+                                        divDirectMap.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=+"+formatted_address));
+                                                startActivity(intent);
+                                            }
+                                        });
 
 
-                                    div.addView(view);
+                                        div.addView(view);
+                                    }
+
 
                                 }
 
