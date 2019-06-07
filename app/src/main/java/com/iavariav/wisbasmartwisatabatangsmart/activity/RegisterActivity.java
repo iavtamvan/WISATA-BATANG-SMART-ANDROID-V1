@@ -11,14 +11,15 @@ import android.widget.Toast;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
 import com.iavariav.wisbasmartwisatabatangsmart.model.ResponseErrorModel;
-import com.iavariav.wisbasmartwisatabatangsmart.rest.ApiClient;
-import com.iavariav.wisbasmartwisatabatangsmart.rest.ApiService;
+import com.iavariav.wisbasmartwisatabatangsmart.rest.server.ApiClient;
+import com.iavariav.wisbasmartwisatabatangsmart.rest.server.ApiService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
+
 
     private EditText edtNamaLengkap;
     private EditText edtEmail;
@@ -27,6 +28,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText edtPassword;
     private Button btnRegister;
 
+    private String longitude;
+    private String latitude;
+
     private ResponseErrorModel responseErrorModel;
 
     @Override
@@ -34,6 +38,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
+        Config.methodRequiresTwoPermission(this);
+        Config.location(this);
+        Config.readLocation(this);
+
+//        SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_NAME, MODE_PRIVATE);
+//        latitude = sharedPreferences.getString(Config.SHARED_LAT_ACCOUNT, "");
+//        longitude = sharedPreferences.getString(Config.SHARED_LONG_ACCOUNT, "");
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                 ,"https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2018/08/07/2985630265.jpg",
                         "https://cdn.brilio.net/news/2018/05/30/143480/thumbnail-sophia-latjuba-pamer-foto-mesra-bareng-cowok-ganteng-kekasih-baru-180530l.jpg",
                         "https://cdn2.boombastis.com/wp-content/uploads/2018/02/Tanda-tangan-dengan-garis-bawah.jpg",
-                        "-9999", "873783", edtUsername.getText().toString(), edtPassword.getText().toString())
+                        Config.latitudeRead, Config.longitudeRead, edtUsername.getText().toString(), edtPassword.getText().toString())
                         .enqueue(new Callback<ResponseErrorModel>() {
                             @Override
                             public void onResponse(Call<ResponseErrorModel> call, Response<ResponseErrorModel> response) {

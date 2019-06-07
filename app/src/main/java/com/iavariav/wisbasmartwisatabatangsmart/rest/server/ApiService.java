@@ -1,4 +1,4 @@
-package com.iavariav.wisbasmartwisatabatangsmart.rest;
+package com.iavariav.wisbasmartwisatabatangsmart.rest.server;
 
 import com.iavariav.wisbasmartwisatabatangsmart.model.LoginModel;
 import com.iavariav.wisbasmartwisatabatangsmart.model.ResponseErrorModel;

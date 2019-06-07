@@ -20,8 +20,8 @@ import android.widget.Toast;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
 import com.iavariav.wisbasmartwisatabatangsmart.model.ResponseErrorModel;
-import com.iavariav.wisbasmartwisatabatangsmart.rest.ApiClient;
-import com.iavariav.wisbasmartwisatabatangsmart.rest.ApiService;
+import com.iavariav.wisbasmartwisatabatangsmart.rest.server.ApiClient;
+import com.iavariav.wisbasmartwisatabatangsmart.rest.server.ApiService;
 
 import retrofit2.Call;
 import retrofit2.Callback;

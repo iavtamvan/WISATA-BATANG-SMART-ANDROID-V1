@@ -6,9 +6,32 @@
     tools:context=".fragment.UmkmFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/divcontainerKontenKosong">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Konten ini belum tersedia"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@android:color/holo_red_dark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/divcontainerKonten">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Konten ini belum tersedia"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@android:color/holo_red_dark"/>
+    </LinearLayout>
 </FrameLayout>

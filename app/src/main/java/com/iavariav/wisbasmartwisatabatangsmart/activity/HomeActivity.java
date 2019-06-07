@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.fragment.AsmaFragment;
+import com.iavariav.wisbasmartwisatabatangsmart.fragment.berita.BeritaFragment;
 import com.iavariav.wisbasmartwisatabatangsmart.fragment.berita.HomeBeritaFragment;
 import com.iavariav.wisbasmartwisatabatangsmart.fragment.TempatFragment;
 import com.iavariav.wisbasmartwisatabatangsmart.fragment.UmkmFragment;
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_berita:
                     fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.containerFragment, new HomeBeritaFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.containerFragment, new BeritaFragment()).commit();
                     return true;
                 case R.id.navigation_asma:
                     fragmentManager = getSupportFragmentManager();

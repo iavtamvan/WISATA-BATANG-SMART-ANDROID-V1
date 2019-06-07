@@ -1,4 +1,4 @@
-package com.iavariav.wisbasmartwisatabatangsmart.rest;
+package com.iavariav.wisbasmartwisatabatangsmart.rest.server;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

@@ -70,9 +70,6 @@ public class TempatFragment extends Fragment {
         longitude = location.getLongitude();
         latitude = location.getLatitude();
 
-        Toast.makeText(getActivity(), "" + latitude + longitude, Toast.LENGTH_SHORT).show();
-
-
         getdataWisata();
         return view;
     }
