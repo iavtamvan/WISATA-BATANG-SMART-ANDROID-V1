@@ -47,7 +47,7 @@ public final class Config {
 
     private static final int RC_CAMERA_AND_LOCATION = 100;
     public static final void methodRequiresTwoPermission(Context context) {
-        String[] perms = {Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        String[] perms = {Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (EasyPermissions.hasPermissions(context, perms)) {
             Log.d("Perms", "methodRequiresTwoPermission: Succes Perms");
         } else {

@@ -4,8 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBtnSend">#0091EA</color>
+    <color name="biruTua">#0250A1</color>
+    <color name="biruMuda">#00A1E9</color>
     <color name="hijau">#007D43</color>
     <color name="orange">#F7B600</color>
     <color name="kuning">#FFE100</color>
+    <color name="putih">#FFFFFF</color>
 
 </resources>
