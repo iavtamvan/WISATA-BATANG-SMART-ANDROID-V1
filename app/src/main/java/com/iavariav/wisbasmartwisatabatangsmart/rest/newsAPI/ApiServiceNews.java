@@ -11,7 +11,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiServiceNews {
-    @GET("everything?q=wisata&language=id&apiKey=12850cd010b54441aaeff6749dc99cd0")
+//    @GET("everything?q=wisata&language=id&apiKey=12850cd010b54441aaeff6749dc99cd0")
+    @GET("top-headlines?country=id&apiKey=12850cd010b54441aaeff6749dc99cd0")
     Call<RootNews> getNews();
 
 

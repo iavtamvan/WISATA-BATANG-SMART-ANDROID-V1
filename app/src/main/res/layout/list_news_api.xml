@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:id="@+id/divcontainer"
         android:orientation="horizontal">
 
         <ImageView
@@ -24,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/raleway_bold"
                 android:text="Judul News"
                 android:id="@+id/listJudulNews"
                 android:textColor="@color/hijau"
@@ -33,7 +34,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/raleway_regular"
                 android:text="Content News"
                 android:id="@+id/contenNews"
                 android:maxLength="200"

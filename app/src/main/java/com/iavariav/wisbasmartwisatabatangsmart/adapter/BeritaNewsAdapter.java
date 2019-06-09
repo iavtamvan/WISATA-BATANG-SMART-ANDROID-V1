@@ -1,16 +1,20 @@
 package com.iavariav.wisbasmartwisatabatangsmart.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
+import com.iavariav.wisbasmartwisatabatangsmart.activity.DetailNewsAPIActivity;
+import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
 import com.iavariav.wisbasmartwisatabatangsmart.model.newsModel.ArticlesItem;
 
 import java.util.ArrayList;
@@ -48,11 +52,22 @@ public class BeritaNewsAdapter extends RecyclerView.Adapter<BeritaNewsAdapter.Vi
         private TextView listJudulNews;
         private TextView contenNews;
         private ImageView ivNews;
+        private LinearLayout divcontainer;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             listJudulNews = itemView.findViewById(R.id.listJudulNews);
             contenNews = itemView.findViewById(R.id.contenNews);
             ivNews = itemView.findViewById(R.id.ivNews);
+            divcontainer = itemView.findViewById(R.id.divcontainer);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DetailNewsAPIActivity.class);
+                    intent.putExtra(Config.BUNDLE_URL_NEWS, articlesItems.get(getAdapterPosition()).getUrl());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

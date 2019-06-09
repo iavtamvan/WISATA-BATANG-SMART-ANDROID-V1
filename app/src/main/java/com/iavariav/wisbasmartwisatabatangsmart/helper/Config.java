@@ -44,6 +44,14 @@ public final class Config {
     public static final String SHARED_STATUS_ACCOUNT = "status_account";
 
 
+    public static final String BUNDLE_URL_NEWS = "bundle_url_news";
+    public static final String BUNDLE_NAMA_KELUHAN = "bundle_nama_keluhan";
+    public static final String BUNDLE_IMAGE = "bundle_image";
+    public static final String BUNDLE_JENIS_KELUHAN = "bundle_jenis_keluhan";
+    public static final String BUNDLE_DESKRIPSI_KELUHAN = "bundle_deskripsi_keluhan";
+    public static final String BUNDLE_TANGGAL_OLEH_STATUS = "bundle_tanggal_oleh_status";
+
+
 
     private static final int RC_CAMERA_AND_LOCATION = 100;
     public static final void methodRequiresTwoPermission(Context context) {
