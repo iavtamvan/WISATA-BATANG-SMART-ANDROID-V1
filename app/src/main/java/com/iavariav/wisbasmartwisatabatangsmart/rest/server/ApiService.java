@@ -1,7 +1,11 @@
 package com.iavariav.wisbasmartwisatabatangsmart.rest.server;
 
+import com.iavariav.wisbasmartwisatabatangsmart.fragment.berita.KeluhanFragment;
+import com.iavariav.wisbasmartwisatabatangsmart.model.KeluhanBeritaModel;
 import com.iavariav.wisbasmartwisatabatangsmart.model.LoginModel;
 import com.iavariav.wisbasmartwisatabatangsmart.model.ResponseErrorModel;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -41,6 +45,13 @@ public interface ApiService {
              @Field("jenis_keluhan") String jenis_keluhan,
              @Field("lat_keluhan") String lat_keluhan,
              @Field("long_keluhan") String long_keluhan);
+
+
+    @FormUrlEncoded
+    @POST("api_get.php")
+    Call<ArrayList<KeluhanBeritaModel>> getKeluhan
+            (@Field("pindah") String pindah);
+
 
 
 
