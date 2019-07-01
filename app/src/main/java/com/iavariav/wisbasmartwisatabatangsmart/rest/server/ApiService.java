@@ -88,6 +88,12 @@ public interface ApiService {
                     @Field("long_umkm") double lat_umkm,
                     @Field("detail_deskripsi_umkm") double long_umkm
             );
+    @FormUrlEncoded
+    @POST("api_delete_umkm.php")
+    Call<ResponseBody> deleteUMKM
+            (
+                    @Field("id_umkm") String id_umkm
+            );
 
     @GET("api_like.php")
     Call<ResponseErrorModel> likeKeluhan

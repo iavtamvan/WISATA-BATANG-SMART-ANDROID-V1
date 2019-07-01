@@ -10,10 +10,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
+import com.iavariav.wisbasmartwisatabatangsmart.rest.server.ApiClient;
+import com.iavariav.wisbasmartwisatabatangsmart.rest.server.ApiService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailUMKMActivity extends AppCompatActivity {
     private String registered;
@@ -30,6 +43,7 @@ public class DetailUMKMActivity extends AppCompatActivity {
     private String dislike_umkm;
     private String kategori_umkm;
     private String status_umkm;
+    private String id_umkm;
     private AppBarLayout appBar;
     private CollapsingToolbarLayout toolbarLayout;
     private Toolbar toolbar;
@@ -48,6 +62,7 @@ public class DetailUMKMActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initView();
+        id_umkm = getIntent().getStringExtra(Config.BUNDLE_ID_UMKM);
         registered = getIntent().getStringExtra(Config.BUNDLE_REGISTERED);
         nama_umkm = getIntent().getStringExtra(Config.BUNDLE_NAMA_UMKM);
         gambar_thumbnail_umkm = getIntent().getStringExtra(Config.BUNDLE_GAMBAR_THUMBNAIL_UMKM);
@@ -64,6 +79,7 @@ public class DetailUMKMActivity extends AppCompatActivity {
         status_umkm = getIntent().getStringExtra(Config.BUNDLE_STATUS_UMKM);
 
         toolbar.setTitle(nama_umkm);
+        getSupportActionBar().setTitle(nama_umkm);
         Glide.with(this).load(gambar_thumbnail_umkm).error(R.drawable.logo_h128).override(512, 512).into(ivUMKMDisplayTop);
         tvUMKMAlamat.setText(alamat_umkm);
         tvUMKMJarak.setText(jarak_umkm);
@@ -89,6 +105,37 @@ public class DetailUMKMActivity extends AppCompatActivity {
                 intent.putExtra(Config.BUNDLE_KATEGORI_UMKM, kategori_umkm);
                 intent.putExtra(Config.BUNDLE_STATUS_UMKM, status_umkm);
                 startActivity(intent);
+            }
+        });
+
+        ivHapusUMKM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiService apiService = ApiClient.getInstanceRetrofit();
+                apiService.deleteUMKM(id_umkm)
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()){
+                                    try {
+                                        JSONObject object = new JSONObject(response.body().string());
+                                        String error_msg = object.optString("error_msg");
+                                        Toast.makeText(DetailUMKMActivity.this, "" + error_msg, Toast.LENGTH_SHORT).show();
+                                        finishAffinity();
+                                        startActivity(new Intent(getApplicationContext(), InformasiUMKMActivity.class));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(DetailUMKMActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
     }

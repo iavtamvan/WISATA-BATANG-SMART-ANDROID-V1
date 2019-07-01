@@ -70,6 +70,7 @@ public class InformasiUMKMAdapter extends RecyclerView.Adapter<InformasiUMKMAdap
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DetailUMKMActivity.class);
+                    intent.putExtra(Config.BUNDLE_ID_UMKM, umkmModel.get(getAdapterPosition()).getIdUmkm());
                     intent.putExtra(Config.BUNDLE_REGISTERED, umkmModel.get(getAdapterPosition()).getRegistered());
                     intent.putExtra(Config.BUNDLE_NAMA_UMKM, umkmModel.get(getAdapterPosition()).getNamaUmkm());
                     intent.putExtra(Config.BUNDLE_GAMBAR_THUMBNAIL_UMKM, umkmModel.get(getAdapterPosition()).getGambarThumbnailUmkm());

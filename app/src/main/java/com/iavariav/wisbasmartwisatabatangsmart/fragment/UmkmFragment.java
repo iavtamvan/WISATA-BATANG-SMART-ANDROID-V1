@@ -51,8 +51,6 @@ public class UmkmFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_NAME, MODE_PRIVATE);
         status = sharedPreferences.getString(Config.SHARED_STATUS_ACCOUNT, "");
-        Toast.makeText(getActivity(), "" + status, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getActivity(), "" + status, Toast.LENGTH_SHORT).show();
         cvKlikLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

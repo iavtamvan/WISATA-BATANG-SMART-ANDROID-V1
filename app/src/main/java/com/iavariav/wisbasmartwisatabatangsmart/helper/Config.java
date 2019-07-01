@@ -54,6 +54,7 @@ public final class Config {
     public static final String BUNDLE_TANGGAL_OLEH_STATUS = "bundle_tanggal_oleh_status";
 
     public static final String BUNDLE_STATUS_EDIT = "bundle_status_edit";
+    public static final String BUNDLE_ID_UMKM = "bundle_id_umkm";
     public static final String BUNDLE_REGISTERED = "bundle_registered";
     public static final String BUNDLE_NAMA_UMKM = "bundle_nama_umkm";
     public static final String BUNDLE_GAMBAR_THUMBNAIL_UMKM = "bundle_gambar_thumbnail_umkm";
