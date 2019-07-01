@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.iavariav.wisbasmartwisatabatangsmart.R;
@@ -30,6 +31,8 @@ public class KeluhanFragment extends Fragment {
     private RecyclerView rv;
     private BeritaKeluhanAdapter beritaKeluhanAdapter;
 
+    private ImageView ivMemuat;
+
     public KeluhanFragment() {
         // Required empty public constructor
     }
@@ -41,9 +44,21 @@ public class KeluhanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_keluhan, container, false);
         initView(view);
-        getDataKeluhan();
+
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getDataKeluhan();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getDataKeluhan();
     }
 
     private void getDataKeluhan() {
@@ -53,6 +68,7 @@ public class KeluhanFragment extends Fragment {
                     @Override
                     public void onResponse(Call<ArrayList<KeluhanBeritaModel>> call, Response<ArrayList<KeluhanBeritaModel>> response) {
                         if (response.isSuccessful()){
+                            ivMemuat.setVisibility(View.GONE);
                             keluhanBeritaModels = response.body();
                             beritaKeluhanAdapter = new BeritaKeluhanAdapter(getActivity(), keluhanBeritaModels);
                             rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -63,6 +79,7 @@ public class KeluhanFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<ArrayList<KeluhanBeritaModel>> call, Throwable t) {
+                        ivMemuat.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -70,5 +87,6 @@ public class KeluhanFragment extends Fragment {
 
     private void initView(View view) {
         rv = view.findViewById(R.id.rv);
+        ivMemuat= view.findViewById(R.id.ivMemuat);
     }
 }

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#E52028</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#00A1E9</color>
     <color name="colorBtnSend">#0091EA</color>
     <color name="biruTua">#0250A1</color>
     <color name="biruMuda">#00A1E9</color>

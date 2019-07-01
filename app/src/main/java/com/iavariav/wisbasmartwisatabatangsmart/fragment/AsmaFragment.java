@@ -258,7 +258,7 @@ public class AsmaFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            edtNamaKeluhan.setText(String.valueOf("" + file));
+//            edtNamaKeluhan.setText(String.valueOf("" + file));
             ivKeluhan.setImageBitmap(selectedImage);
         }
     }

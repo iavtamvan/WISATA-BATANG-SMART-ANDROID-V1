@@ -56,6 +56,8 @@ public class TempatFragment extends Fragment {
     private double longitude;
     private double latitude;
 
+    private ImageView ivMemuat;
+
     public TempatFragment() {
         // Required empty public constructor
     }
@@ -72,7 +74,7 @@ public class TempatFragment extends Fragment {
         longitude = location.getLongitude();
         latitude = location.getLatitude();
 
-        getdataWisata();
+//        getdataWisata();
         return view;
     }
 
@@ -80,6 +82,12 @@ public class TempatFragment extends Fragment {
     public void onStart() {
         super.onStart();
 //        getdataWisata();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getdataWisata();
     }
 
     private void getdataWisata() {
@@ -131,6 +139,7 @@ public class TempatFragment extends Fragment {
                                     if (layoutInflater== null) {
                                         Log.d(TAG, "onResponse: Eror");
                                     } else {
+                                        ivMemuat.setVisibility(View.GONE);
                                         View view = layoutInflater.inflate(R.layout.list_tempat, null);
 
                                         final LinearLayout divDirectMap;
@@ -140,7 +149,7 @@ public class TempatFragment extends Fragment {
                                         final ImageView ivIcon;
 
                                         ivIcon = view.findViewById(R.id.ivIcon);
-                                        Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(512, 512).error(R.drawable.ic_launcher_background).into(ivIcon);
+                                        Glide.with(getActivity()).load("https://maps.googleapis.com/maps/api/place/photo?photoreference=" + photo_reference + "&maxheight=3120&maxwidth=4160&key=AIzaSyD9M2Vrygo9eDa5uV_adg-ls2lJ3sk7tqM").override(512, 512).error(R.drawable.logo_h128).into(ivIcon);
                                         tvNamaTempat = view.findViewById(R.id.tvNamaTempat);
                                         tvNamaTempat.setText(namaTempat);
                                         tvAlamat = view.findViewById(R.id.tvAlamat);
@@ -205,5 +214,6 @@ public class TempatFragment extends Fragment {
 
     private void initView(View view) {
         div = view.findViewById(R.id.div);
+        ivMemuat = view.findViewById(R.id.ivMemuat);
     }
 }

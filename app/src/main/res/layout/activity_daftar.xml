@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.umkm.DaftarActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:src="@drawable/upload_gambar_v1_256"
+                    android:scaleType="fitXY"
+                    android:id="@+id/ivUmkm"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ketuk untuk memilih gambar"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginBottom="8dp"/>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edtNamaUMKM"
+                        android:hint="Nama UMKM Ex. Oleh Oleh Bu Karno"
+                        android:maxLines="10"
+                        android:inputType="text"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@android:color/black"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edtUMKMAlamat"
+                        android:hint="Alamat"
+                        android:maxLines="10"
+                        android:inputType="text"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@android:color/black"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edtUMKMDeskripsi"
+                        android:hint="Deskripsi"
+                        android:maxLines="10"
+                        android:inputType="text"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@android:color/black"/>
+                </android.support.design.widget.TextInputLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori UMKM"
+                    android:fontFamily="sans-serif-medium"
+                    android:visibility="gone"
+                    android:textColor="@android:color/black"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/spnUMKMKategori">
+
+                </Spinner>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/ivResult"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerInParent="true" />
+                    <FrameLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/camera_preview"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapes_rectangel_btn_send"
+            android:text="Kirim"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/btnSendUMKM"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapes_rectangel_btn_send"
+            android:text="Update"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/btnUpdateUMKM"/>
+
+    </LinearLayout>
+
+</LinearLayout>

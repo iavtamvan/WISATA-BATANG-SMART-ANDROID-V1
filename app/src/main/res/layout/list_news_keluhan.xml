@@ -50,6 +50,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:src="@android:drawable/ic_menu_add" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/ivLike"
+                    android:src="@drawable/like"
+                    android:layout_marginRight="8dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/ivLikeSukses"
+                    android:visibility="gone"
+                    android:src="@drawable/like_sukses"
+                    android:layout_marginRight="8dp"/>
+                <TextView
+                    android:id="@+id/tvTotalLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center|left"
+                    android:text="200 Like"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/ivdisLike"
+                    android:src="@drawable/dislike"
+                    android:layout_marginRight="8dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:id="@+id/ivdisLikeSukses"
+                    android:src="@drawable/dislike_sukses"
+                    android:layout_marginRight="8dp"/>
+                <TextView
+                    android:id="@+id/tvTotalDisLike"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center|left"
+                    android:text="200 Like"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="18dp" />
+
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

@@ -4,12 +4,14 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
 
 import com.iavariav.wisbasmartwisatabatangsmart.R;
+import com.iavariav.wisbasmartwisatabatangsmart.activity.LoginActivity;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -51,11 +53,31 @@ public final class Config {
     public static final String BUNDLE_DESKRIPSI_KELUHAN = "bundle_deskripsi_keluhan";
     public static final String BUNDLE_TANGGAL_OLEH_STATUS = "bundle_tanggal_oleh_status";
 
+    public static final String BUNDLE_STATUS_EDIT = "bundle_status_edit";
+    public static final String BUNDLE_REGISTERED = "bundle_registered";
+    public static final String BUNDLE_NAMA_UMKM = "bundle_nama_umkm";
+    public static final String BUNDLE_GAMBAR_THUMBNAIL_UMKM = "bundle_gambar_thumbnail_umkm";
+    public static final String BUNDLE_ALAMAT_UMKM = "bundle_alamat_umkm";
+    public static final String BUNDLE_JARAK_UMKM = "bundle_jarak_umkm";
+    public static final String BUNDLE_LAT_UMKM = "bundle_lat_umkm";
+    public static final String BUNDLE_LONG_UMKM = "bundle_long_umkm";
+    public static final String BUNDLE_GAMBAR_1_UMKM = "bundle_gambar_1_umkm";
+    public static final String BUNDLE_GAMBAR_2_UMKM = "bundle_gambar_2_umkm";
+    public static final String BUNDLE_DETAIL_DESKRIPSI_UMKM = "bundle_detail_deskripsi_umkm";
+    public static final String BUNDLE_LIKE_UMKM = "bundle_like_umkm";
+    public static final String BUNDLE_DISLIKE_UMKM = "bundle_dislike_umkm";
+    public static final String BUNDLE_KATEGORI_UMKM = "bundle_kategori_umkm";
+    public static final String BUNDLE_STATUS_UMKM = "bundle_status_umkm";
+
+
 
 
     private static final int RC_CAMERA_AND_LOCATION = 100;
     public static final void methodRequiresTwoPermission(Context context) {
-        String[] perms = {Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        String[] perms = {
+                Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE
+        };
         if (EasyPermissions.hasPermissions(context, perms)) {
             Log.d("Perms", "methodRequiresTwoPermission: Succes Perms");
         } else {
@@ -86,5 +108,31 @@ public final class Config {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Config.SHARED_NAME, MODE_PRIVATE);
         latitudeRead = sharedPreferences.getString(Config.SHARED_LAT_ACCOUNT, "");
         longitudeRead = sharedPreferences.getString(Config.SHARED_LONG_ACCOUNT, "");
+    }
+
+    public static void logout(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SHARED_NAME, "");
+        editor.putString(SHARED_ID_ACCOUNT, "");
+        editor.putString(SHARED_REGISTERED, "");
+        editor.putString(SHARED_NAMA_ACCOUNT, "");
+        editor.putString(SHARED_EMAIL_ACCOUNT, "");
+        editor.putString(SHARED_NO_HP_ACCOUNT, "");
+        editor.putString(SHARED_NIK_ACCOUNT, "");
+        editor.putString(SHARED_ALAMAT_ACCOUNT, "");
+        editor.putString(SHARED_AGAMA_ACCOUNT, "");
+        editor.putString(SHARED_JABATAN_ACCOUNT, "");
+        editor.putString(SHARED_KOTA_ACCOUNT, "");
+        editor.putString(SHARED_KAB_ACCOUNT, "");
+        editor.putString(SHARED_FOTO_FRONT_ACCOUNT, "");
+        editor.putString(SHARED_FOTO_BACK_ACCOUNT, "");
+        editor.putString(SHARED_TTD_ACCOUNT, "");
+        editor.putString(SHARED_LAT_ACCOUNT, "");
+        editor.putString(SHARED_LONG_ACCOUNT, "");
+        editor.putString(SHARED_STATUS_ACCOUNT, "");
+        editor.apply();
+
+        context.startActivity(new Intent(context, LoginActivity.class));
     }
 }

@@ -30,10 +30,6 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_wisata:
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.containerFragment, new WisataFragment()).commit();
-                    return true;
                 case R.id.navigation_tempat:
                     fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.containerFragment, new TempatFragment()).commit();
@@ -63,8 +59,9 @@ public class HomeActivity extends AppCompatActivity {
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         methodRequiresTwoPermission();
+        getSupportActionBar().hide();
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.containerFragment, new WisataFragment()).commit();
+        fragmentManager.beginTransaction().replace(R.id.containerFragment, new TempatFragment()).commit();
     }
 
     @AfterPermissionGranted(RC_CAMERA_AND_LOCATION)

@@ -4,13 +4,17 @@ import com.iavariav.wisbasmartwisatabatangsmart.fragment.berita.KeluhanFragment;
 import com.iavariav.wisbasmartwisatabatangsmart.model.KeluhanBeritaModel;
 import com.iavariav.wisbasmartwisatabatangsmart.model.LoginModel;
 import com.iavariav.wisbasmartwisatabatangsmart.model.ResponseErrorModel;
+import com.iavariav.wisbasmartwisatabatangsmart.model.UmkmModel;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @FormUrlEncoded
@@ -51,9 +55,46 @@ public interface ApiService {
     @POST("api_get.php")
     Call<ArrayList<KeluhanBeritaModel>> getKeluhan
             (@Field("pindah") String pindah);
+    @FormUrlEncoded
+    @POST("api_get.php")
+    Call<ArrayList<UmkmModel>> getInformasiUMKM
+            (@Field("pindah") String pindah);
 
+    @FormUrlEncoded
+    @POST("api_tambah_umkm.php")
+    Call<ResponseBody> postUMKM
+            (
+                    @Field("id_account") String id_account,
+                    @Field("nama_umkm") String nama_umkm,
+                    @Field("gambar_thumbnail_umkm") String gambar_thumbnail_umkm,
+                    @Field("alamat_umkm") String alamat_umkm,
+                    @Field("jarak_umkm") String jarak_umkm,
+                    @Field("lat_umkm") double lat_umkm,
+                    @Field("long_umkm") double long_umkm,
+                    @Field("gambar_1_umkm") String gambar_1_umkm,
+                    @Field("gambar_2_umkm") String gambar_2_umkm,
+                    @Field("detail_deskripsi_umkm") String detail_deskripsi_umkm,
+                    @Field("kategori_umkm") String kategori_umkm
+            );
+    @FormUrlEncoded
+    @POST("api_update_umkm.php")
+    Call<ResponseBody> updateUMKM
+            (
+                    @Field("id_umkm") String id_account,
+                    @Field("nama_umkm") String nama_umkm,
+                    @Field("gambar_thumbnail_umkm") String gambar_thumbnail_umkm,
+                    @Field("alamat_umkm") String alamat_umkm,
+                    @Field("lat_umkm") String jarak_umkm,
+                    @Field("long_umkm") double lat_umkm,
+                    @Field("detail_deskripsi_umkm") double long_umkm
+            );
 
+    @GET("api_like.php")
+    Call<ResponseErrorModel> likeKeluhan
+            (@Query("id_keluhan") String id_keluhan);
 
-
+    @GET("api_dislike.php")
+    Call<ResponseErrorModel> disLikeKeluhan
+            (@Query("id_keluhan") String id_keluhan);
 
 }

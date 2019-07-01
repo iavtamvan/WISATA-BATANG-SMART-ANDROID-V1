@@ -4,123 +4,135 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4sp"
+        app:cardCornerRadius="8dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/ivIcon"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/logo_h128"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#51000000"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="8dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Tempatnya"
+                            android:textStyle="bold"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="16dp"
+                            android:id="@+id/tvNamaTempat"
+                            android:textColor="@android:color/white"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat Tempatnya"
+                            android:fontFamily="sans-serif-medium"
+                            android:id="@+id/tvAlamat"
+                            android:textSize="12dp"
+                            android:textColor="@android:color/white"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:background="#00DFDFDF">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:id="@+id/tvJarak"
+                            android:layout_gravity="center"
+                            android:textColor="@color/kuning"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="30 Km"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/divDirectMap"
+                        android:background="@drawable/shapes_rectangel">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Langsung ke lokasi"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8sp"
-        app:cardElevation="8dp"
         app:cardCornerRadius="8dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/ivIcon"
-                    android:layout_gravity="center"
-                    android:layout_margin="4dp"
-                    app:srcCompat="@drawable/ic_launcher_background"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="8dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama Tempatnya"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-medium"
-                        android:textSize="16dp"
-                        android:id="@+id/tvNamaTempat"
-                        android:textColor="@android:color/black"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Alamat Tempatnya"
-                        android:fontFamily="sans-serif-medium"
-                        android:id="@+id/tvAlamat"
-                        android:textSize="12dp"
-                        android:textColor="@android:color/darker_gray"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="10dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:background="#DFDFDF">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:src="@android:drawable/ic_dialog_map" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:id="@+id/tvJarak"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="30 Km"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:id="@+id/divDirectMap"
-                    android:background="@drawable/shapes_rectangel">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:gravity="center"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/white"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Langsung ke lokasi"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 </LinearLayout>

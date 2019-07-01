@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class BeritaFragment extends Fragment {
     private ArrayList<ArticlesItem> rootNews;
     private BeritaNewsAdapter beritaNewsAdapter;
 
+    private ImageView ivMemuat;
+
     public BeritaFragment() {
         // Required empty public constructor
     }
@@ -46,8 +49,19 @@ public class BeritaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_berita, container, false);
         initView(view);
-        getBerita();
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getBerita();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     private void getBerita() {
@@ -56,6 +70,7 @@ public class BeritaFragment extends Fragment {
             @Override
             public void onResponse(Call<RootNews> call, Response<RootNews> response) {
                 if (response.isSuccessful()){
+                    ivMemuat.setVisibility(View.GONE);
                     rootNews = response.body().getArticles();
                     beritaNewsAdapter = new BeritaNewsAdapter(getActivity(), rootNews);
                     rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL, false));
@@ -66,6 +81,7 @@ public class BeritaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<RootNews> call, Throwable t) {
+                ivMemuat.setVisibility(View.GONE);
                 Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -73,5 +89,6 @@ public class BeritaFragment extends Fragment {
 
     private void initView(View view) {
         rv = view.findViewById(R.id.rv);
+        ivMemuat = view.findViewById(R.id.ivMemuat);
     }
 }

@@ -1,16 +1,22 @@
 package com.iavariav.wisbasmartwisatabatangsmart.fragment;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iavariav.wisbasmartwisatabatangsmart.R;
+import com.iavariav.wisbasmartwisatabatangsmart.activity.umkm.DaftarActivity;
+import com.iavariav.wisbasmartwisatabatangsmart.activity.umkm.InformasiUMKMActivity;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -23,6 +29,13 @@ public class UmkmFragment extends Fragment {
     private String status;
     private LinearLayout divcontainerKontenKosong;
     private LinearLayout divcontainerKonten;
+    private CardView cvKlikInformasi;
+    private CardView cvKlikLogout;
+    private ImageView ivUMKMInformasi;
+    private TextView tvUMKMInformasi;
+    private CardView cvKlikdaftar;
+    private ImageView ivUMKMDaftar;
+    private TextView tvUMKMDaftar;
 
     public UmkmFragment() {
         // Required empty public constructor
@@ -40,12 +53,41 @@ public class UmkmFragment extends Fragment {
         status = sharedPreferences.getString(Config.SHARED_STATUS_ACCOUNT, "");
         Toast.makeText(getActivity(), "" + status, Toast.LENGTH_SHORT).show();
         Toast.makeText(getActivity(), "" + status, Toast.LENGTH_SHORT).show();
+        cvKlikLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finishAffinity();
+                Config.logout(getActivity());
+            }
+        });
+
         if (status.contains("umum")) {
             divcontainerKontenKosong.setVisibility(View.VISIBLE);
 
         } else {
             //TODO Tampilkan seluruh data
             divcontainerKontenKosong.setVisibility(View.GONE);
+            divcontainerKonten.setVisibility(View.VISIBLE);
+
+            cvKlikdaftar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (status.contains("Umum")) {
+                        Toast.makeText(getActivity(), "Maaf Hanya Untuk Pedagang", Toast.LENGTH_SHORT).show();
+                    } else {
+                        startActivity(new Intent(getActivity(), DaftarActivity.class));
+                    }
+
+                }
+            });
+
+            cvKlikInformasi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), InformasiUMKMActivity.class));
+                }
+            });
+
         }
         return view;
     }
@@ -53,5 +95,12 @@ public class UmkmFragment extends Fragment {
     private void initView(View view) {
         divcontainerKontenKosong = view.findViewById(R.id.divcontainerKontenKosong);
         divcontainerKonten = view.findViewById(R.id.divcontainerKonten);
+        cvKlikInformasi = view.findViewById(R.id.cvKlikInformasi);
+        cvKlikLogout = view.findViewById(R.id.cvKlikLogout);
+        ivUMKMInformasi = view.findViewById(R.id.ivUMKMInformasi);
+        tvUMKMInformasi = view.findViewById(R.id.tvUMKMInformasi);
+        cvKlikdaftar = view.findViewById(R.id.cvKlikdaftar);
+        ivUMKMDaftar = view.findViewById(R.id.ivUMKMDaftar);
+        tvUMKMDaftar = view.findViewById(R.id.tvUMKMDaftar);
     }
 }
