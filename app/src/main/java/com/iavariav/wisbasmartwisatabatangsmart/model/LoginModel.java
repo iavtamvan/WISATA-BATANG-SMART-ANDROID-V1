@@ -26,7 +26,8 @@ public class LoginModel {
     private String errorMsg;
 
     @SerializedName("nama_account")
-    private String namaAccount;
+    private String
+            namaAccount;
 
     @SerializedName("registered")
     private String registered;
@@ -60,6 +61,16 @@ public class LoginModel {
 
     @SerializedName("long_account")
     private String longAccount;
+    @SerializedName("username")
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public void setAgamaAccount(String agamaAccount) {
         this.agamaAccount = agamaAccount;

@@ -8,8 +8,8 @@
 
     <item
         android:id="@+id/navigation_berita"
-        android:icon="@drawable/berita"
-        android:title="Berita" />
+        android:icon="@drawable/umkm"
+        android:title="UMKM" />
     <item
         android:id="@+id/navigation_asma"
         android:icon="@drawable/aspirasi"

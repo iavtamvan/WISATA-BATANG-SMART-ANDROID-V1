@@ -26,10 +26,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ProfilActivity"></activity>
+        <activity android:name=".activity.BeritaActivity" />
         <activity
             android:name=".activity.umkm.DetailUMKMActivity"
             android:label="@string/title_activity_detail_umkm"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.umkm.DaftarActivity" />
         <activity android:name=".activity.umkm.InformasiUMKMActivity" />
         <activity

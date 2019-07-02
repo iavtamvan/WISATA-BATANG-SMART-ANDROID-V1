@@ -73,8 +73,7 @@ public interface ApiService {
                     @Field("long_umkm") double long_umkm,
                     @Field("gambar_1_umkm") String gambar_1_umkm,
                     @Field("gambar_2_umkm") String gambar_2_umkm,
-                    @Field("detail_deskripsi_umkm") String detail_deskripsi_umkm,
-                    @Field("kategori_umkm") String kategori_umkm
+                    @Field("detail_deskripsi_umkm") String detail_deskripsi_umkm
             );
     @FormUrlEncoded
     @POST("api_update_umkm.php")

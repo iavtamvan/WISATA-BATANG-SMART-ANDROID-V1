@@ -26,12 +26,13 @@ public class SplashActivity extends AppCompatActivity {
 
                 // TODO jika belum masuk ke LoginActivity
                 if (username.equalsIgnoreCase("") || TextUtils.isEmpty(username)){
+                    finishAffinity();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
                 // TODO jika sudah nantinya akan masuk ke Home
                 else {
+                    finishAffinity();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
 
                 }
             }

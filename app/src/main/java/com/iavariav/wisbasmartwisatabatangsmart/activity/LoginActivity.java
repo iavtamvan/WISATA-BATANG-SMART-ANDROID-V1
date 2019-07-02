@@ -134,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString(Config.SHARED_LAT_ACCOUNT, loginModel.getLatAccount());
                                 editor.putString(Config.SHARED_LONG_ACCOUNT, loginModel.getLongAccount());
                                 editor.putString(Config.SHARED_STATUS_ACCOUNT, loginModel.getStatusAccount());
+                                editor.putString(Config.SHARED_USERNAME, loginModel.getUsername());
 
                                 editor.apply();
 

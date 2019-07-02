@@ -44,6 +44,7 @@ public final class Config {
     public static final String SHARED_LAT_ACCOUNT = "lat_account";
     public static final String SHARED_LONG_ACCOUNT = "long_account";
     public static final String SHARED_STATUS_ACCOUNT = "status_account";
+    public static final String SHARED_USERNAME = "username_account";
 
 
     public static final String BUNDLE_URL_NEWS = "bundle_url_news";
@@ -69,7 +70,6 @@ public final class Config {
     public static final String BUNDLE_DISLIKE_UMKM = "bundle_dislike_umkm";
     public static final String BUNDLE_KATEGORI_UMKM = "bundle_kategori_umkm";
     public static final String BUNDLE_STATUS_UMKM = "bundle_status_umkm";
-
 
 
 

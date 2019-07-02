@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iavariav.wisbasmartwisatabatangsmart.R;
+import com.iavariav.wisbasmartwisatabatangsmart.activity.BeritaActivity;
+import com.iavariav.wisbasmartwisatabatangsmart.activity.ProfilActivity;
 import com.iavariav.wisbasmartwisatabatangsmart.activity.umkm.DaftarActivity;
 import com.iavariav.wisbasmartwisatabatangsmart.activity.umkm.InformasiUMKMActivity;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
@@ -34,6 +36,7 @@ public class UmkmFragment extends Fragment {
     private ImageView ivUMKMInformasi;
     private TextView tvUMKMInformasi;
     private CardView cvKlikdaftar;
+    private CardView cvKlikProfil;
     private ImageView ivUMKMDaftar;
     private TextView tvUMKMDaftar;
 
@@ -51,6 +54,7 @@ public class UmkmFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_NAME, MODE_PRIVATE);
         status = sharedPreferences.getString(Config.SHARED_STATUS_ACCOUNT, "");
+//        Toast.makeText(getActivity(), "" + status, Toast.LENGTH_SHORT).show();
         cvKlikLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,10 +63,10 @@ public class UmkmFragment extends Fragment {
             }
         });
 
-        if (status.contains("umum")) {
-            divcontainerKontenKosong.setVisibility(View.VISIBLE);
-
-        } else {
+//        if (status.contains("umum")) {
+//            divcontainerKontenKosong.setVisibility(View.VISIBLE);
+//
+//        } else {
             //TODO Tampilkan seluruh data
             divcontainerKontenKosong.setVisibility(View.GONE);
             divcontainerKonten.setVisibility(View.VISIBLE);
@@ -82,11 +86,20 @@ public class UmkmFragment extends Fragment {
             cvKlikInformasi.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), InformasiUMKMActivity.class));
+                    startActivity(new Intent(getActivity(), BeritaActivity.class));
                 }
             });
 
-        }
+            cvKlikProfil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getActivity(), ProfilActivity.class));
+                }
+            });
+
+
+
+//        }
         return view;
     }
 
@@ -98,6 +111,7 @@ public class UmkmFragment extends Fragment {
         ivUMKMInformasi = view.findViewById(R.id.ivUMKMInformasi);
         tvUMKMInformasi = view.findViewById(R.id.tvUMKMInformasi);
         cvKlikdaftar = view.findViewById(R.id.cvKlikdaftar);
+        cvKlikProfil = view.findViewById(R.id.cvKlikProfil);
         ivUMKMDaftar = view.findViewById(R.id.ivUMKMDaftar);
         tvUMKMDaftar = view.findViewById(R.id.tvUMKMDaftar);
     }

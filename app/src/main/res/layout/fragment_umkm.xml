@@ -54,7 +54,7 @@
                         android:id="@+id/ivUMKMInformasi"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:src="@drawable/informasi_umkm_1" />
+                        android:src="@drawable/news" />
 
                     <TextView
                         android:id="@+id/tvUMKMInformasi"
@@ -64,7 +64,7 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:text="Informasi\nUMKM"
+                        android:text="Berita&amp;\nKeluhan"
                         android:textColor="@android:color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -119,6 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:id="@+id/cvKlikProfil"
                 android:layout_weight="1"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
@@ -131,7 +132,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:src="@drawable/comingsoon" />
+                        android:src="@drawable/user" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -140,7 +141,7 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:text=" \n"
+                        android:text="Profil Akun\nWISBA"
                         android:textColor="@android:color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />

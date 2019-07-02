@@ -85,6 +85,11 @@ public class DetailUMKMActivity extends AppCompatActivity {
         tvUMKMJarak.setText(jarak_umkm);
         tvUMKMDeskripsi.setText(detail_deskripsi_umkm);
 
+        if (status_umkm.contains("Umum")) {
+            ivEditUMKM.setVisibility(View.GONE);
+            ivHapusUMKM.setVisibility(View.GONE);
+        }
+
         ivEditUMKM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

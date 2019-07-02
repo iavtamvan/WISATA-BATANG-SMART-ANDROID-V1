@@ -203,8 +203,7 @@ public class DaftarActivity extends AppCompatActivity {
     private void postUMKM() {
         ApiService apiService = ApiClient.getInstanceRetrofit();
         apiService.postUMKM(idAccount, edtNamaUMKM.getText().toString().trim(), "http://devlop.can.web.id/uploads/client_profile_images/3/" + getNameImage, edtUMKMAlamat.getText().toString().trim(),
-                jarak, latitude, longitude, "", "", edtUMKMDeskripsi.getText().toString().trim(),
-                "")
+                jarak, latitude, longitude, "", "", edtUMKMDeskripsi.getText().toString().trim())
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
