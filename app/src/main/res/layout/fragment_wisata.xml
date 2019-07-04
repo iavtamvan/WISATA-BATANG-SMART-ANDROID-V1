@@ -6,10 +6,22 @@
     tools:context=".fragment.WisataFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <WebView
+        android:id="@+id/activity_main_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/ivMemuat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ipString"
-        android:text="@string/hello_blank_fragment" />
+        android:src="@drawable/loading_1080"/>
+    <ImageView
+        android:id="@+id/ivKoneksi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:src="@drawable/koneksi_putus_1080"
+        android:visibility="gone"/>
 
 </FrameLayout>

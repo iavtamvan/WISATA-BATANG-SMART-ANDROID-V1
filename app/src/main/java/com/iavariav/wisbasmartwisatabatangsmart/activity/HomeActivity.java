@@ -31,6 +31,10 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.wisata_google:
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.containerFragment, new WisataFragment()).commit();
+                    return true;
                 case R.id.navigation_tempat:
                     fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.containerFragment, new TempatFragment()).commit();
@@ -62,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         methodRequiresTwoPermission();
         getSupportActionBar().hide();
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.containerFragment, new TempatFragment()).commit();
+        fragmentManager.beginTransaction().replace(R.id.containerFragment, new WisataFragment()).commit();
     }
 
     @AfterPermissionGranted(RC_CAMERA_AND_LOCATION)
@@ -77,5 +81,12 @@ public class HomeActivity extends AppCompatActivity {
                     RC_CAMERA_AND_LOCATION, perms);
         }
     }
+    @Override
+    public void onBackPressed() {
+//        final WisataFragment fragment = (WisataFragment) getSupportFragmentManager().findFragmentByTag("wisats");
 
+//        if (fragment.allowBackPressed()) { // and then you define a method allowBackPressed with the logic to allow back pressed or not
+            super.onBackPressed();
+//        }
+    }
 }

@@ -48,8 +48,8 @@ public class BeritaKeluhanAdapter extends RecyclerView.Adapter<BeritaKeluhanAdap
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
-        Glide.with(context).load(keluhanBeritaModels.get(i).getGambarKeluhan()).override(512, 512).error(R.drawable.ic_launcher_background).into(viewHolder.ivKeluhan);
-        Glide.with(context).load(keluhanBeritaModels.get(i).getFacePelaporanKeluhan()).override(512, 512).error(R.drawable.ic_launcher_background).into(viewHolder.icUserProfile);
+        Glide.with(context).load(keluhanBeritaModels.get(i).getGambarKeluhan()).override(512, 512).error(R.drawable.logo_h128).into(viewHolder.ivKeluhan);
+        Glide.with(context).load(keluhanBeritaModels.get(i).getFacePelaporanKeluhan()).override(512, 512).error(R.drawable.logo_h128).into(viewHolder.icUserProfile);
         viewHolder.listJudulJKeluhan.setText(keluhanBeritaModels.get(i).getNamaKeluhan() + " | " + keluhanBeritaModels.get(i).getJenisKeluhan());
         viewHolder.contenKeluhan.setText(keluhanBeritaModels.get(i).getDeskripsiKeluhan() + " ...");
         viewHolder.tvTotalLike.setText(String.valueOf(keluhanBeritaModels.get(i).getLikeKeluhan()) + " Like");

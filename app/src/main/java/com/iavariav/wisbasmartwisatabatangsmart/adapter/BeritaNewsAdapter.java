@@ -37,7 +37,7 @@ public class BeritaNewsAdapter extends RecyclerView.Adapter<BeritaNewsAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Glide.with(context).load(articlesItems.get(i).getUrlToImage()).override(512, 512).error(R.drawable.ic_launcher_background).into(viewHolder.ivNews);
+        Glide.with(context).load(articlesItems.get(i).getUrlToImage()).override(512, 512).error(R.drawable.logo_h128).into(viewHolder.ivNews);
         viewHolder.listJudulNews.setText(articlesItems.get(i).getTitle());
         viewHolder.contenNews.setText(articlesItems.get(i).getContent() + " ...");
     }

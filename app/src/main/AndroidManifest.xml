@@ -3,6 +3,8 @@
     package="com.iavariav.wisbasmartwisatabatangsmart">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera.front" />
@@ -26,19 +28,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ProfilActivity"></activity>
-        <activity android:name=".activity.BeritaActivity" />
+        <activity android:name=".activity.ProfilActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.BeritaActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activity.umkm.DetailUMKMActivity"
             android:label="@string/title_activity_detail_umkm"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.umkm.DaftarActivity" />
-        <activity android:name=".activity.umkm.InformasiUMKMActivity" />
+        <activity android:name=".activity.umkm.DaftarActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.umkm.InformasiUMKMActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.DetailNewsServerActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.DetailNewsAPIActivity" />
-        <activity android:name=".activity.SplashActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.DetailNewsAPIActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,10 +58,14 @@
         </activity>
         <activity
             android:name=".activity.HomeActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" />
-        <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

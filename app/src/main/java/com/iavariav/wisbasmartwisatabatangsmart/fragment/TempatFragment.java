@@ -12,14 +12,20 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidstudy.networkmanager.Monitor;
+import com.androidstudy.networkmanager.Tovuti;
 import com.bumptech.glide.Glide;
 import com.iavariav.wisbasmartwisatabatangsmart.R;
 import com.iavariav.wisbasmartwisatabatangsmart.helper.Config;
@@ -57,6 +63,8 @@ public class TempatFragment extends Fragment {
     private double latitude;
 
     private ImageView ivMemuat;
+    private WebView activityMainWebview;
+    private String url;
 
     public TempatFragment() {
         // Required empty public constructor
@@ -73,6 +81,33 @@ public class TempatFragment extends Fragment {
         @SuppressLint("MissingPermission") Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         longitude = location.getLongitude();
         latitude = location.getLatitude();
+
+//        Tovuti.from(getActivity()).monitor(new Monitor.ConnectivityListener(){
+//            @Override
+//            public void onConnectivityChanged(int connectionType, boolean isConnected, boolean isFast){
+//                // TODO: Handle the connection...
+//                if (!isConnected) {
+//                    Toast.makeText(getActivity(), "Periksa Koneksi Anda", Toast.LENGTH_SHORT).show();
+//                    ivMemuat.setVisibility(View.GONE);
+//                } else {
+//                    Toast.makeText(getActivity(), "Conected", Toast.LENGTH_SHORT).show();
+//                    url = "https://www.google.com/destination/map/topsights?q=wisata+batang&oq=wisat&aqs=chrome.2.69i57j0j35i39j69i60l3.5306j0j7&sourceid=chrome&ie=UTF-8&tcfs=&dest_src=ts&dest_mid=/m/02pyl6b&sa=X&ved=2ahUKEwjai4-SnprjAhVKtI8KHfKtD30Q6tEBKAQwAHoECAoQBw#dest_mid=/m/02pyl6b&dest_src=ts&tcfs=Eh4KCi9tLzAycHlsNmISEEthYnVwYXRlbiBCYXRhbmc";
+//                    // Enable Javascript
+//                    WebSettings webSettings = activityMainWebview.getSettings();
+//                    webSettings.setJavaScriptEnabled(true);
+//                    activityMainWebview.loadUrl(url);
+//                    // TODO handle jumping to chrome
+//                    activityMainWebview.setWebViewClient(new WebViewClient() {
+//                        public boolean shouldOverrideUrlLoading(WebView view, String url){
+//                            // do your handling codes here, which url is the requested url
+//                            // probably you need to open that url rather than redirect:
+//                            view.loadUrl(url);
+//                            return false; // then it is not handled by default action
+//                        }
+//                    });
+//                }
+//            }
+//        });
 
 //        getdataWisata();
         return view;
@@ -215,5 +250,6 @@ public class TempatFragment extends Fragment {
     private void initView(View view) {
         div = view.findViewById(R.id.div);
         ivMemuat = view.findViewById(R.id.ivMemuat);
+        activityMainWebview = view.findViewById(R.id.activity_main_webview);
     }
 }
