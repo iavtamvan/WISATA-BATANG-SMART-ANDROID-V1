@@ -40,6 +40,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Objects;
 
+import im.delight.android.location.SimpleLocation;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -66,6 +67,9 @@ public class TempatFragment extends Fragment {
     private WebView activityMainWebview;
     private String url;
 
+    private SimpleLocation location;
+
+
     public TempatFragment() {
         // Required empty public constructor
     }
@@ -77,10 +81,20 @@ public class TempatFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tempat, container, false);
         initView(view);
-        LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        @SuppressLint("MissingPermission") Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        longitude = location.getLongitude();
+//        LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+//        @SuppressLint("MissingPermission") Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        longitude = location.getLongitude();
+//        latitude = location.getLatitude();
+        location = new SimpleLocation(getActivity());
+
+        // if we can't access the location yet
+        if (!location.hasLocationEnabled()) {
+            // ask the user to enable location access
+            SimpleLocation.openSettings(getActivity());
+        }
+
         latitude = location.getLatitude();
+        longitude = location.getLongitude();
 
 //        Tovuti.from(getActivity()).monitor(new Monitor.ConnectivityListener(){
 //            @Override
